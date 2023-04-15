@@ -1,9 +1,26 @@
 version: '3.7'
 services:
+  redminepostgres:
+    container_name: redminepostgres
+    tty: true
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: aqwsde123!
+      PGDATA: /data/postgres
+    ports:
+      - "5435:5432"
+    restart: unless-stopped
   redmine:
       container_name: redmine
+      build:
+        context: .
+        dockerfile: Dockerfile
+      links:
+      - redminepostgres:database
       tty: true
-      image: redmine:latest
       ports:
         - "6847:3000"
-      restart: always
+      depends_on:
+        - redminepostgres
+      restart: unless-stopped
