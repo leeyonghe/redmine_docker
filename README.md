@@ -5,4 +5,5 @@
     - 구글 메일과 연동하여 메일 발송
     - configuration.yml파일 수정 필요
         - user_name: 연동하고자 하는 gmail
-        - password: 구글 2차인증 등록시 나오는 패스워드 등록
+        - password: ⚠️ 패스워드는 아래 링크 참고하여 생성된 비번을 사용해야 한다
+            - https://lee-it-alls.tistory.com/155
