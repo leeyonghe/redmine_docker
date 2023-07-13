@@ -9,7 +9,7 @@ services:
       POSTGRES_PASSWORD: aqwsde123!
       PGDATA: /data/postgres
     ports:
-      - "5435:5432"
+      - "5432:5432"
     restart: unless-stopped
   redmine:
       container_name: redmine
@@ -17,7 +17,7 @@ services:
         context: .
         dockerfile: Dockerfile
       links:
-      - redminepostgres:database
+        - "redminepostgres:database"
       tty: true
       ports:
         - "6847:3000"

@@ -1,8 +1,11 @@
 FROM redmine:latest
 
-ENV REDMINE_DB_POSTGRES=database:5435
-ENV REDMINE_DB_USERNAME=postgres
-ENV REDMINE_DB_PASSWORD=aqwsde123!
+ENV DB_ADAPTER=postgres
+ENV DB_HOST=database
+ENV DB_PORT=5432
+ENV DB_NAME=redmine
+ENV DB_USER=postgres
+ENV DB_PASS=aqwsde123!
 
 RUN apt-get -y update && \
     apt-get -y install sudo && \
@@ -11,6 +14,8 @@ RUN apt-get -y update && \
     apt-get -y install wget && \
     apt-get -y install git
 
-# RUN cd /usr/src/redmine/plugins && git clone https://github.com/agileware-jp/redmine_banner
+WORKDIR /usr/src/redmine
+
+COPY configuration.yml ./config/configuration.yml
 
 EXPOSE 6847
