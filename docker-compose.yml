@@ -13,11 +13,12 @@ services:
     restart: unless-stopped
   redmine:
       container_name: redmine
+      environment:
+        REDMINE_DB_POSTGRES: redminepostgres
+        REDMINE_DB_PASSWORD: aqwsde123!
       build:
         context: .
         dockerfile: Dockerfile
-      links:
-        - "redminepostgres:database"
       tty: true
       ports:
         - "6847:3000"
